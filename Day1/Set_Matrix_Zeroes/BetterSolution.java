@@ -1,66 +1,59 @@
-public class MyClass {
-    public static void main(String args[]) {
-      int a[][]={{0,1,2,0},{3,4,5,2},{1,3,1,5}};
-      setZeroes(a);
-    }
-public static void setZeroes(int[][] matrix) {
-    
-        int row=matrix.length,col=matrix[0].length;
- System.out.println(row);
- System.out.println(col);
-     int row1[]=new int[row];
-   
+class Solution {
+    public void setZeroes(int[][] arr) {
+          
+        
+        
+        int row=arr.length,col=arr[0].length;
+        int arrrow[]=new int[row];
+        //to all new row set as 1
         for(int i=0;i<row;i++)
-            row1[i]=1;
-     int col1[]=new int[col];
-        for(int i=0;i<row;i++)
-           col1[i]=1;
-           
-  
- for(int i=0;i<row;i++)
-  {
-      for(int j=0;j<col;j++)
-      {
-          if(matrix[i][j]==0)
-          {
-              System.out.println("i--"+i+"  j-- "+j);
-              row1[i]=0;
-              col1[j]=0;
-          }
-      }
-  }
-     
-     for(int i=0;i<row1.length;i++)
-     {
-         if(row1[i]==0)
-         {
-             int m=0;
-             while(m<row1.length)
-             {
-                 matrix[m][i]=0;
-                 m++;
-             }
-         }
-     }
-     for(int i=0;i<col1.length;i++)
-     {
-         if(col1[i]==0)
-         {
-             int m=0;
-             while(m<row1.length )
-             {
-                 matrix[i][m]=0;
-                 m++;
-             }
-         }
-     }
+            arrrow[i]=1;
+        
+        //to all new column set as 1
+        int arrcol[]=new int[col];
+        for(int i=0;i<col;i++)
+            arrcol[i]=1;
             
-       
-       
-    
-    for(int i=0;i<row;i++){
-        for(int j=0;j<col;j++)
-           System.out.print(matrix[i][j]);
-           System.out.println();}
-}
+            //to set 0 in new arr
+            for(int i=0;i<row;i++)
+            {
+                for(int j=0;j<col;j++)
+                {
+                    if(arr[i][j]==0)
+                    {
+                        arrrow[i]=0;
+                        arrcol[j]=0;
+                    }
+                }
+            }
+            
+            
+            
+            
+            
+            //update that zero 
+            //row checking update in colum 
+            for(int i=0;i<row;i++)
+            {
+                if(arrrow[i]==0)
+                {
+                    for(int j=0;j<col;j++)
+                     arr[i][j]=0;
+                }
+            }
+            //for column checking update in column
+            for(int i=0;i<col;i++)
+            {
+                if(arrcol[i]==0)
+                {
+                    for(int j=0;j<row;j++)
+                    {
+                        arr[j][i]=0;
+                    }
+                }
+            }
+            
+        
+        
+    }
 }
